@@ -7,6 +7,7 @@
 
 #include <QTextEdit>
 #include <QMdiSubWindow>
+#include <QLabel>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -67,6 +68,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QSpinBox *spinBox = new QSpinBox(this);                      //2.创建QSpinBox
     ui->mainToolBar->addWidget(spinBox);                         //向工具栏添加QSpinBox部件
 
+
+    /**
+      *【状态栏添加状态信息】
+      */
+    ui->statusBar->showMessage(tr("欢迎使用多文档编辑器"),2000);
+    QLabel *permanent = new QLabel(this);
+    permanent->setFrameStyle(QFrame::Box|QFrame::Sunken);
+    permanent->setText("www.qter.org");
+    ui->statusBar->addPermanentWidget(permanent);
 }
 
 MainWindow::~MainWindow()
@@ -89,3 +99,22 @@ void MainWindow::on_action_Dock_triggered()
 {
     ui->dockWidget->show();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
