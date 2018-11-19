@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QToolButton>
+#include <QSpinBox>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -9,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /**
      *【2】使用代码的方式添加子菜单
-    */
+     */
     QMenu *editMenu = ui->menuBar->addMenu(tr("编辑(&E)"));              //添加编辑菜单
     QAction *action_Open = editMenu->addAction(                         //添加打开菜单
                 QIcon(":/image/images/open.png"),tr("打开文件(&O)"));
@@ -38,7 +41,26 @@ MainWindow::MainWindow(QWidget *parent) :
     editMenu->addAction(action_R);
     editMenu->addAction(action_C);
 
+    /**
+      * 【4】工具栏的使用
+      */
+    ui->mainToolBar->addSeparator();                           //向菜单中添加间隔器
 
+    QToolButton *toolBtn = new QToolButton(this);              //1.创建QToolButton
+    toolBtn->setText(tr("颜色"));
+
+    QMenu *colorMenu = new QMenu(this);                         //创建菜单
+    colorMenu->addAction(tr("红色"));
+    colorMenu->addAction(tr("绿色"));
+
+    toolBtn->setMenu(colorMenu);                                //添加菜单
+    toolBtn->setPopupMode(QToolButton::MenuButtonPopup);        //弹出模式
+    ui->mainToolBar->addWidget(toolBtn);                        //向工具栏中添加QToolButton按钮
+
+    ui->mainToolBar->addSeparator();                            //向菜单中添加间隔器
+
+    QSpinBox *spinBox = new QSpinBox(this);                      //2.创建QSpinBox
+    ui->mainToolBar->addWidget(spinBox);                         //向工具栏添加QSpinBox部件
 
 }
 

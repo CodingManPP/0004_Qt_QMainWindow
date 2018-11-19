@@ -2,7 +2,7 @@
 Qt中的MainWindow例程
 
 ## _001_QMainWindow
-### 添加子菜单
+### 1.添加子菜单
 * 【1】使用设计师添加子菜单
 * 【2】使用代码添加子菜单,在mainwindow.cpp中
 ```
@@ -16,7 +16,7 @@ Qt中的MainWindow例程
     ui->mainToolBar->addAction(action_Open);                            //在工具栏中添加动作
 ```
 
-### 使用QActionGroup增加互斥的选择菜单
+### 2.使用QActionGroup增加互斥的选择菜单
 ```
 /**
       * 【3】QActionGroup类
@@ -41,4 +41,28 @@ Qt中的MainWindow例程
 ```
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_001_QMainWindow/mymainwindow/QActionGroup%E6%95%88%E6%9E%9C.png)
 
+### 3.工具栏的使用
+增加了3个部件，原始的部件、新建了一个QToolButton和一个QSpinBox放置到了工具栏中
+```
+/**
+  * 【4】工具栏的使用
+  */
+ui->mainToolBar->addSeparator();                           //向菜单中添加间隔器
 
+QToolButton *toolBtn = new QToolButton(this);              //1.创建QToolButton
+toolBtn->setText(tr("颜色"));
+
+QMenu *colorMenu = new QMenu(this);                         //创建菜单
+colorMenu->addAction(tr("红色"));
+colorMenu->addAction(tr("绿色"));
+
+toolBtn->setMenu(colorMenu);                                //添加菜单
+toolBtn->setPopupMode(QToolButton::MenuButtonPopup);        //弹出模式
+ui->mainToolBar->addWidget(toolBtn);                        //向工具栏中添加QToolButton按钮
+
+ui->mainToolBar->addSeparator();                            //向菜单中添加间隔器
+
+QSpinBox *spinBox = new QSpinBox(this);                      //2.创建QSpinBox
+ui->mainToolBar->addWidget(spinBox);                         //向工具栏添加QSpinBox部件
+```
+![avatar]()
