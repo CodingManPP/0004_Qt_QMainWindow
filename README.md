@@ -65,4 +65,4 @@ ui->mainToolBar->addSeparator();                            //向菜单中添加
 QSpinBox *spinBox = new QSpinBox(this);                      //2.创建QSpinBox
 ui->mainToolBar->addWidget(spinBox);                         //向工具栏添加QSpinBox部件
 ```
-![avatar]()
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_001_QMainWindow/mymainwindow/%E5%B7%A5%E5%85%B7%E6%A0%8F%E7%9A%84%E4%BD%BF%E7%94%A8.png)
