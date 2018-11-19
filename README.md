@@ -93,4 +93,17 @@ void MainWindow::on_action_Dock_triggered()
 ```
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_001_QMainWindow/mymainwindow/Dock%E9%83%A8%E4%BB%B6%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.png)
 
+### 6.状态栏信息的显示
+【注意】只能使用代码添加
+```
+    /**
+      *【状态栏添加状态信息】
+      */
+    ui->statusBar->showMessage(tr("欢迎使用多文档编辑器"),2000);
+    QLabel *permanent = new QLabel(this);
+    permanent->setFrameStyle(QFrame::Box|QFrame::Sunken);
+    permanent->setText("www.qter.org");
+    ui->statusBar->addPermanentWidget(permanent);
+```
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_001_QMainWindow/mymainwindow/%E7%8A%B6%E6%80%81%E6%A0%8F%E4%BF%A1%E6%81%AF%E5%AE%9E%E4%BE%8B.png)
 
