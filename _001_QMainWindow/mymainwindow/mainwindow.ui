@@ -35,7 +35,14 @@
     </property>
     <addaction name="action_New"/>
    </widget>
+   <widget class="QMenu" name="menu_Dock">
+    <property name="title">
+     <string>显示Dock</string>
+    </property>
+    <addaction name="action_Dock"/>
+   </widget>
    <addaction name="menu_F"/>
+   <addaction name="menu_Dock"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="toolButtonStyle">
@@ -49,6 +56,42 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFeatureMask</set>
+   </property>
+   <property name="windowTitle">
+    <string>工具箱</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QFontComboBox" name="fontComboBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>213</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
   <action name="action_New">
    <property name="icon">
     <iconset resource="myimages.qrc">
@@ -62,6 +105,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="action_Dock">
+   <property name="text">
+    <string>显示Dock</string>
    </property>
   </action>
  </widget>

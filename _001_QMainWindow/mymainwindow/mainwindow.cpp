@@ -84,3 +84,8 @@ void MainWindow::on_action_New_triggered()
     child->show();
 }
 
+//dock工具箱的显示
+void MainWindow::on_action_Dock_triggered()
+{
+    ui->dockWidget->show();
+}
