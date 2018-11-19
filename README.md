@@ -107,3 +107,7 @@ void MainWindow::on_action_Dock_triggered()
 ```
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_001_QMainWindow/mymainwindow/%E7%8A%B6%E6%80%81%E6%A0%8F%E4%BF%A1%E6%81%AF%E5%AE%9E%E4%BE%8B.png)
 
+## 002_CustomAction
+ 自定义子菜单，使用到了自定义信号和槽的使用，比较难，需要好好琢磨，详细的源码查看工程
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_002_CustomAction/images/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%83%A8%E4%BB%B6%E5%AE%9E%E4%BE%8B.gif)
+
