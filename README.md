@@ -39,3 +39,6 @@ Qt中的MainWindow例程
     editMenu->addAction(action_R);
     editMenu->addAction(action_C);
 ```
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_001_QMainWindow/mymainwindow/QActionGroup%E6%95%88%E6%9E%9C.png)
+
+
