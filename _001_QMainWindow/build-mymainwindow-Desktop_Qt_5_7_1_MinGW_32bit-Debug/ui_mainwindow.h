@@ -16,10 +16,10 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMdiArea>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -31,7 +31,7 @@ public:
     QAction *action_New;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QTextEdit *textEdit;
+    QMdiArea *mdiArea;
     QMenuBar *menuBar;
     QMenu *menu_F;
     QToolBar *mainToolBar;
@@ -53,10 +53,10 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
+        mdiArea = new QMdiArea(centralWidget);
+        mdiArea->setObjectName(QStringLiteral("mdiArea"));
 
-        gridLayout->addWidget(textEdit, 0, 0, 1, 1);
+        gridLayout->addWidget(mdiArea, 0, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);

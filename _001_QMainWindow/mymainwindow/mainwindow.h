@@ -17,7 +17,6 @@ public:
 
 private slots:
     void on_action_New_triggered();
-
 private:
     Ui::MainWindow *ui;
 };

@@ -5,6 +5,10 @@
 #include <QSpinBox>
 #include <qtextedit.h>
 
+#include <QTextEdit>
+#include <QMdiSubWindow>
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -72,22 +76,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_action_New_triggered()
 {
+    //新建文本编辑器部件
     QTextEdit *edit = new QTextEdit(this);
+    //使用QMdiArea类的addSubWIndow()函数创建子窗口，以文本编辑器为中心部件
     QMdiSubWindow *child = ui->mdiArea->addSubWindow(edit);
     child->setWindowTitle(tr("多文档编辑器子窗口"));
-
-
-
+    child->show();
 }
-
-
-
-
-
-
-
-
-
-
-
 
