@@ -73,7 +73,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_action_New_triggered()
 {
     QTextEdit *edit = new QTextEdit(this);
-    QMdiSubWindow *subWindow = ui->mdiArea->addSubWindow(edit);
+    QMdiSubWindow *child = ui->mdiArea->addSubWindow(edit);
+    child->setWindowTitle(tr("多文档编辑器子窗口"));
+    
 
 
 }
