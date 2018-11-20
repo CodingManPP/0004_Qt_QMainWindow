@@ -21,6 +21,7 @@ private:
 private slots:
     void showTextFrame(); //遍历文档框架
     void showTextBlock(); //遍历所有的文本块
+    void setTextFont(bool checked);   //设置字体格式
 };
 
 #endif // MAINWINDOW_H

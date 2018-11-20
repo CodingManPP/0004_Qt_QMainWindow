@@ -51,6 +51,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(action_textBlock,&QAction::triggered,this,&MainWindow::showTextBlock);
     ui->mainToolBar->addAction(action_textBlock);
 
+    /**
+     *【5-1】增加action动作，设置字体格式
+     */
+    QAction *action_font = new QAction(tr("字体"),this);
+    action_font->setCheckable(true);
+    connect(action_font,&QAction::toggled,this,&MainWindow::setTextFont);
+    ui->mainToolBar->addAction(action_font);
+
 
 
 }
@@ -81,11 +89,28 @@ void MainWindow::showTextBlock()
     for (int i=0; i<count; i++){
         qDebug()<<tr("文本块%1，文本块首行行号为：%2，长度为：%3，内容为:").arg(i).arg(block.firstLineNumber()).arg(block.length())<<block.text();
         block = block.next();
+
     }
+}
 
-
-
-
+/*【5-2】设置字体编辑格式*/
+void MainWindow::setTextFont(bool checked)
+{
+    if (checked){
+        QTextCursor cursor = ui->textEdit->textCursor();
+        QTextBlockFormat blockFormat;
+        blockFormat.setAlignment(Qt::AlignCenter);
+        cursor.insertBlock(blockFormat);
+        QTextCharFormat charFormat;
+        charFormat.setBackground(Qt::lightGray);
+        charFormat.setForeground(Qt::blue);
+        charFormat.setFont(QFont(tr("宋体"),12,QFont::Bold,true));
+        charFormat.setFontUnderline(true);
+        cursor.setCharFormat(charFormat);
+        cursor.insertText(tr("测试文字"));
+    }else{
+        /*恢复默认的字体格式*/
+    }
 }
 
 MainWindow::~MainWindow()
