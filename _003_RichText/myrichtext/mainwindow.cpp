@@ -37,11 +37,20 @@ MainWindow::MainWindow(QWidget *parent) :
     cursor.insertFrame(frameFormat);                                    //应用该框架样式
 
     /**
-     *【3-1】增加action动作，信号触发打印根框架和文本块的内容
+     *【3-1】增加action动作，信号触发打印根框架
      */
     QAction *action_textFrame = new QAction(tr("框架"),this);
     connect(action_textFrame,&QAction::triggered,this,&MainWindow::showTextFrame);
     ui->mainToolBar->addAction(action_textFrame);
+
+
+    /**
+     *【4-1】增加action动作，信号触发打印所有文本块
+     */
+    QAction *action_textBlock = new QAction(tr("文本块"),this);
+    connect(action_textBlock,&QAction::triggered,this,&MainWindow::showTextBlock);
+    ui->mainToolBar->addAction(action_textBlock);
+
 
 
 }
@@ -61,6 +70,22 @@ void MainWindow::showTextFrame()
             qDebug()<<"block"<<childBlock.text();
         }
     }
+}
+
+/*【4-2】槽实现*/
+void MainWindow::showTextBlock()
+{
+    QTextDocument *document = ui->textEdit->document();
+    QTextBlock block = document->firstBlock();
+    int count = document->blockCount();
+    for (int i=0; i<count; i++){
+        qDebug()<<tr("文本块%1，文本块首行行号为：%2，长度为：%3，内容为:").arg(i).arg(block.firstLineNumber()).arg(block.length())<<block.text();
+        block = block.next();
+    }
+
+
+
+
 }
 
 MainWindow::~MainWindow()
