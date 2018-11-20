@@ -173,6 +173,7 @@ void MainWindow::showTextFrame()
     }
 }
 ```
+【说明】这种方法只显示子框架中的文本块，无法深入到内部进行遍历
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%96%87%E6%9C%AC%E5%9D%97%E6%98%BE%E7%A4%BA.png)
 
 
