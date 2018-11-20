@@ -111,3 +111,36 @@ void MainWindow::on_action_Dock_triggered()
  自定义子菜单，使用到了自定义信号和槽的使用，比较难，需要好好琢磨，详细的源码查看工程
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_002_CustomAction/images/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%83%A8%E4%BB%B6%E5%AE%9E%E4%BE%8B.gif)
 
+## _003_RichText
+    [1] 根框架使用样式 
+    [2] 光标使用样式
+```
+/**
+     * 【1】根框架使用样式
+     */
+
+    QTextFrameFormat format;                                //创建框架格式
+    format.setBorderBrush(Qt::red);                         //边界颜色
+    format.setBorder(3);                                    //边界宽度
+    QTextDocument *document = ui->textEdit->document();     //获取文档对象
+    QTextFrame *rootFrame = document->rootFrame();          //获取根框架
+    rootFrame->setFrameFormat(format);                      //根框架使用格式
+```
+效果如下：
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%A0%B9%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F%E5%AE%9E%E4%BE%8B.png)
+```
+    /**
+     *【2】光标使用样式
+     */
+    //新建框架格式
+    QTextFrameFormat frameFormat;
+    frameFormat.setBackground(Qt::lightGray);                           //设置背景颜色
+    frameFormat.setMargin(10);                                          //设置外边距
+    frameFormat.setPadding(5);                                          //设置内边距
+    frameFormat.setBorder(2);
+    frameFormat.setBorderStyle(QTextFrameFormat::BorderStyle_Dotted);   //设置边框样式
+
+    QTextCursor cursor = ui->textEdit->textCursor();                    //获取光标
+    cursor.insertFrame(frameFormat);                                    //应用该框架样式
+```
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E5%85%89%E6%A0%87%E6%A0%B7%E5%BC%8F%E6%A1%86%E6%9E%B6%E5%AE%9E%E4%BE%8B.png)
