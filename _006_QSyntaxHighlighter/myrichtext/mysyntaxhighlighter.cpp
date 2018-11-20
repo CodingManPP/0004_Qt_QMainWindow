@@ -3,10 +3,7 @@
 MySyntaxHighlighter::MySyntaxHighlighter(QTextDocument *parent):
     QSyntaxHighlighter(parent)
 {
-
 }
-
-
 //必须重新实现该函数
 void MySyntaxHighlighter::highlightBlock(const QString &text)
 {
