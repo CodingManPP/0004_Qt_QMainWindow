@@ -329,3 +329,35 @@ void MainWindow::findtext()
 }
 ```
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_005_RichTextFind/myrichtext/%E6%9F%A5%E6%89%BE%E5%AE%9E%E4%BE%8B%E7%BB%93%E6%9E%9C.png)
+
+## 006_QSyntaxHighlighter
+### 支持高亮
+* 使用QSyntaxHighlighter类中的highlightBlock()函数
+```
+MySyntaxHighlighter::MySyntaxHighlighter(QTextDocument *parent):
+    QSyntaxHighlighter(parent)
+{
+}
+//必须重新实现该函数
+void MySyntaxHighlighter::highlightBlock(const QString &text)
+{
+   QTextCharFormat myFormat;                            //字符格式
+   myFormat.setFontWeight(QFont::Bold);
+   myFormat.setForeground(Qt::green);
+   QString pattern = "\\bchar\\b";                      //要匹配的字符是“char”单词
+   QRegExp expression(pattern);                         //创建正则表达式
+   int index = text.indexOf(expression);
+   while(index >= 0){
+       int length = expression.matchedLength();
+       setFormat(index,length,myFormat);                //如果匹配成功则设置格式
+       index = text.indexOf(expression,index+length);   //继续匹配
+   }
+}
+
+```
+* 使用HTML
+```
+ /*使用html高亮*/
+    ui->textEdit->append(tr("<h1><font color=red>使用HTML</font></h1>"));
+```
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_006_QSyntaxHighlighter/myrichtext/%E9%AB%98%E4%BA%AEhtml.png)
