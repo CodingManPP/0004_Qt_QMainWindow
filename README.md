@@ -204,6 +204,7 @@ void MainWindow::showTextBlock()
 ```
 【说明】
 行号是从0开始计算的；文本块的长度是从1计算的，即什么内容也不写，文本块的长度也是1，长度会比实际的字符数多1.
+
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%89%93%E5%8D%B0%E6%89%80%E6%9C%89%E6%96%87%E6%9C%AC%E5%9D%97%E5%86%85%E5%AE%B9-%E7%A9%BA%E5%86%85%E5%AE%B9.png)
 
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%89%93%E5%8D%B0%E6%89%80%E6%9C%89%E6%96%87%E6%9C%AC%E5%9D%97%E5%86%85%E5%AE%B9.png)
