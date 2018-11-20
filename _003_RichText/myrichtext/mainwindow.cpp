@@ -99,15 +99,15 @@ void MainWindow::setTextFont(bool checked)
     if (checked){
         QTextCursor cursor = ui->textEdit->textCursor();
         QTextBlockFormat blockFormat;
-        blockFormat.setAlignment(Qt::AlignCenter);
-        cursor.insertBlock(blockFormat);
-        QTextCharFormat charFormat;
-        charFormat.setBackground(Qt::lightGray);
-        charFormat.setForeground(Qt::blue);
-        charFormat.setFont(QFont(tr("宋体"),12,QFont::Bold,true));
-        charFormat.setFontUnderline(true);
-        cursor.setCharFormat(charFormat);
-        cursor.insertText(tr("测试文字"));
+        blockFormat.setAlignment(Qt::AlignCenter);                  //水平居中
+        cursor.insertBlock(blockFormat);                            //使用文本格式
+        QTextCharFormat charFormat;                                 //字符格式
+        charFormat.setBackground(Qt::lightGray);                    //背景色
+        charFormat.setForeground(Qt::blue);                         //字体颜色
+        charFormat.setFont(QFont(tr("宋体"),12,QFont::Bold,true));   //使用宋体，12号，加粗，倾斜
+        charFormat.setFontUnderline(true);                          //使用下划线
+        cursor.setCharFormat(charFormat);                           //使用字符格式
+        cursor.insertText(tr("测试文字"));                            //插入文本
     }else{
         /*恢复默认的字体格式*/
     }
