@@ -3,6 +3,8 @@
 
 #include <QTextFrame>
 
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -34,6 +36,31 @@ MainWindow::MainWindow(QWidget *parent) :
     QTextCursor cursor = ui->textEdit->textCursor();                    //获取光标
     cursor.insertFrame(frameFormat);                                    //应用该框架样式
 
+    /**
+     *【3-1】增加action动作，信号触发打印根框架和文本块的内容
+     */
+    QAction *action_textFrame = new QAction(tr("框架"),this);
+    connect(action_textFrame,&QAction::triggered,this,&MainWindow::showTextFrame);
+    ui->mainToolBar->addAction(action_textFrame);
+
+
+}
+
+/*【3-2】槽实现*/
+void MainWindow::showTextFrame()
+{
+    QTextDocument *document = ui->textEdit->document();
+    QTextFrame *rootFrame = document->rootFrame();
+    QTextFrame::iterator it;
+    for (it = rootFrame->begin();!(it.atEnd());it++){
+        QTextFrame *childFrame = it.currentFrame(); //获取当前框架的指针
+        QTextBlock childBlock = it.currentBlock();  //获取当期文本块
+        if (childFrame){
+            qDebug()<<"frame;";
+        }else if (childBlock.isValid()){
+            qDebug()<<"block"<<childBlock.text();
+        }
+    }
 }
 
 MainWindow::~MainWindow()
