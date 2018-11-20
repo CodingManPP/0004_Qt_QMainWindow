@@ -112,8 +112,9 @@ void MainWindow::on_action_Dock_triggered()
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_002_CustomAction/images/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%83%A8%E4%BB%B6%E5%AE%9E%E4%BE%8B.gif)
 
 ## _003_RichText
-    [1] 根框架使用样式 
-    [2] 光标使用样式
+### 使用样式
+[1] 根框架使用样式 
+[2] 光标使用样式
 ```
 /**
      * 【1】根框架使用样式
@@ -144,3 +145,35 @@ void MainWindow::on_action_Dock_triggered()
     cursor.insertFrame(frameFormat);                                    //应用该框架样式
 ```
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E5%85%89%E6%A0%87%E6%A0%B7%E5%BC%8F%E6%A1%86%E6%9E%B6%E5%AE%9E%E4%BE%8B.png)
+### 文本框内容打印
+点击框架按钮，触发信号打印文本框的内容
+```
+    /**
+     *【3-1】增加action动作，信号触发打印根框架和文本块的内容
+     */
+    QAction *action_textFrame = new QAction(tr("框架"),this);
+    connect(action_textFrame,&QAction::triggered,this,&MainWindow::showTextFrame);
+    ui->mainToolBar->addAction(action_textFrame);
+```
+```
+/*【3-2】槽实现*/
+void MainWindow::showTextFrame()
+{
+    QTextDocument *document = ui->textEdit->document();
+    QTextFrame *rootFrame = document->rootFrame();
+    QTextFrame::iterator it;
+    for (it = rootFrame->begin();!(it.atEnd());it++){
+        QTextFrame *childFrame = it.currentFrame(); //获取当前框架的指针
+        QTextBlock childBlock = it.currentBlock();  //获取当期文本块
+        if (childFrame){
+            qDebug()<<"frame;";
+        }else if (childBlock.isValid()){
+            qDebug()<<"block"<<childBlock.text();
+        }
+    }
+}
+```
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%96%87%E6%9C%AC%E5%9D%97%E6%98%BE%E7%A4%BA.png)
+
+
+
