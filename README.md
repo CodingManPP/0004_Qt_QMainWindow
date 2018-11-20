@@ -112,7 +112,7 @@ void MainWindow::on_action_Dock_triggered()
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_002_CustomAction/images/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%83%A8%E4%BB%B6%E5%AE%9E%E4%BE%8B.gif)
 
 ## _003_RichText
-### 使用样式
+### 1.使用样式
 [1] 根框架使用样式 
 [2] 光标使用样式
 ```
@@ -145,7 +145,7 @@ void MainWindow::on_action_Dock_triggered()
     cursor.insertFrame(frameFormat);                                    //应用该框架样式
 ```
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E5%85%89%E6%A0%87%E6%A0%B7%E5%BC%8F%E6%A1%86%E6%9E%B6%E5%AE%9E%E4%BE%8B.png)
-### 文本框内容打印
+### 2.文本框内容打印
 点击框架按钮，触发信号打印文本框的内容
 ```
     /**
@@ -175,6 +175,38 @@ void MainWindow::showTextFrame()
 ```
 【说明】这种方法只显示子框架中的文本块，无法深入到内部进行遍历
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%96%87%E6%9C%AC%E5%9D%97%E6%98%BE%E7%A4%BA.png)
+
+### 3.打印所有文本内容
+遍历打印所有文本框内容：
+增加信号链接：
+```
+
+    /**
+     *【4-1】增加action动作，信号触发打印所有文本块
+     */
+    QAction *action_textBlock = new QAction(tr("文本块"),this);
+    connect(action_textBlock,&QAction::triggered,this,&MainWindow::showTextBlock);
+    ui->mainToolBar->addAction(action_textBlock);
+```
+增加槽：
+```
+/*【4-2】槽实现*/
+void MainWindow::showTextBlock()
+{
+    QTextDocument *document = ui->textEdit->document();
+    QTextBlock block = document->firstBlock();
+    int count = document->blockCount();
+    for (int i=0; i<count; i++){
+        qDebug()<<tr("文本块%1，文本块首行行号为：%2，长度为：%3，内容为:").arg(i).arg(block.firstLineNumber()).arg(block.length())<<block.text();
+        block = block.next();
+    }
+}
+```
+【说明】
+行号是从0开始计算的；文本块的长度是从1计算的，即什么内容也不写，文本块的长度也是1，长度会比实际的字符数多1.
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%89%93%E5%8D%B0%E6%89%80%E6%9C%89%E6%96%87%E6%9C%AC%E5%9D%97%E5%86%85%E5%AE%B9-%E7%A9%BA%E5%86%85%E5%AE%B9.png)
+![avatar]
+(https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%89%93%E5%8D%B0%E6%89%80%E6%9C%89%E6%96%87%E6%9C%AC%E5%9D%97%E5%86%85%E5%AE%B9.png)
 
 
 
