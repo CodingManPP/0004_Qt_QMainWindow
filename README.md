@@ -287,4 +287,45 @@ void MainWindow::insertImage()
 }
  ```
  
- 
+ ## 005_RichTextFind
+ 实现文本中的查找：主要使用的是TextEditor中的find函数
+ 构造方法中
+ ```
+   QAction *action_textFind = new QAction(tr("查找"),this);
+    connect(action_textFind,&QAction::triggered,this,&MainWindow::textFind);
+    ui->mainToolBar->addAction(action_textFind);
+
+    findDialog = new QDialog(this);
+    lineEdit = new QLineEdit(findDialog);
+    QPushButton *btn = new QPushButton(findDialog);
+    btn->setText(tr("查找下一个"));
+    
+    connect(btn,&QPushButton::clicked,this,&MainWindow::findtext);
+    
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(lineEdit);
+    layout->addWidget(btn);
+    findDialog->setLayout(layout);
+ ```
+实现槽：
+```
+/*查找文本*/
+void MainWindow::textFind()
+{
+    findDialog->show();
+}
+
+/*查找下一个*/
+void MainWindow::findtext()
+{
+   QString string = lineEdit->text();
+   //使用查找函数查找指定的字符串，查找方式是向后查找
+   bool isFind = ui->textEdit->find(string,QTextDocument::FindBackward|QTextDocument::FindCaseSensitively);
+   if (isFind){
+       qDebug()<< tr("行号：%1 列号：%2")
+                 .arg(ui->textEdit->textCursor().blockNumber())
+                 .arg(ui->textEdit->textCursor().columnNumber());
+   }
+}
+```
+![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_005_RichTextFind/myrichtext/%E6%9F%A5%E6%89%BE%E5%AE%9E%E4%BE%8B%E7%BB%93%E6%9E%9C.png)
