@@ -209,5 +209,37 @@ void MainWindow::showTextBlock()
 
 ![avatar](https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E6%89%93%E5%8D%B0%E6%89%80%E6%9C%89%E6%96%87%E6%9C%AC%E5%9D%97%E5%86%85%E5%AE%B9.png)
 
-
-
+### 4.修改字体格式
+增加菜单，信号触发
+```
+ /**
+     *【5-1】增加action动作，设置字体格式
+     */
+    QAction *action_font = new QAction(tr("字体"),this);
+    action_font->setCheckable(true);
+    connect(action_font,&QAction::toggled,this,&MainWindow::setTextFont);
+    ui->mainToolBar->addAction(action_font);
+```
+```
+/*【5-2】设置字体编辑格式*/
+void MainWindow::setTextFont(bool checked)
+{
+    if (checked){
+        QTextCursor cursor = ui->textEdit->textCursor();
+        QTextBlockFormat blockFormat;
+        blockFormat.setAlignment(Qt::AlignCenter);                  //水平居中
+        cursor.insertBlock(blockFormat);                            //使用文本格式
+        QTextCharFormat charFormat;                                 //字符格式
+        charFormat.setBackground(Qt::lightGray);                    //背景色
+        charFormat.setForeground(Qt::blue);                         //字体颜色
+        charFormat.setFont(QFont(tr("宋体"),12,QFont::Bold,true));   //使用宋体，12号，加粗，倾斜
+        charFormat.setFontUnderline(true);                          //使用下划线
+        cursor.setCharFormat(charFormat);                           //使用字符格式
+        cursor.insertText(tr("测试文字"));                            //插入文本
+    }else{
+        /*恢复默认的字体格式*/
+    }
+}
+```
+![avatar](
+https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E5%AD%97%E4%BD%93%E6%A0%BC%E5%BC%8F%E4%BF%AE%E6%94%B9.png)
