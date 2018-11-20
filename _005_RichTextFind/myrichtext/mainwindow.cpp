@@ -21,7 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     lineEdit = new QLineEdit(findDialog);
     QPushButton *btn = new QPushButton(findDialog);
     btn->setText(tr("查找下一个"));
+
     connect(btn,&QPushButton::clicked,this,&MainWindow::findtext);
+
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(lineEdit);
     layout->addWidget(btn);
