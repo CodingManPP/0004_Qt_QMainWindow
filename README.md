@@ -243,3 +243,48 @@ void MainWindow::setTextFont(bool checked)
 ```
 ![avatar](
 https://github.com/CodingManPP/0004_Qt_QMainWindow/blob/master/_003_RichText/myrichtext/%E5%AD%97%E4%BD%93%E6%A0%BC%E5%BC%8F%E4%BF%AE%E6%94%B9.png)
+
+## 004_RichTextFormListImage
+ 富文本使用表格、列表、图片，但是图片没有显示出来
+ ```
+  QAction *action_textTable = new QAction(tr("表格"),this);
+    QAction *action_textList = new QAction(tr("列表"),this);
+    QAction *action_textImage = new QAction(tr("图片"),this);
+
+    connect(action_textTable,&QAction::triggered,this,&MainWindow::insertTable);
+    connect(action_textList,&QAction::triggered,this,&MainWindow::insertList);
+    connect(action_textImage,&QAction::triggered,this,&MainWindow::insertImage);
+
+    ui->mainToolBar->addAction(action_textTable);
+    ui->mainToolBar->addAction(action_textList);
+    ui->mainToolBar->addAction(action_textImage);
+ ```
+ ```
+ //[1-2]插入表格
+void MainWindow::insertTable()
+{
+    QTextCursor cursor = ui->textEdit->textCursor();
+    QTextTableFormat format;
+    format.setCellPadding(10);
+    format.setCellSpacing(2);
+    cursor.insertTable(2,2,format);
+}
+
+//[2-2]插入列表
+void MainWindow::insertList()
+{
+    QTextListFormat format;
+    format.setStyle(QTextListFormat::ListDecimal);
+    ui->textEdit->textCursor().insertList(format);
+}
+
+//[3-2]插入图片
+void MainWindow::insertImage()
+{
+   QTextImageFormat format;
+   format.setName("../myrichtext/logo.png");
+   ui->textEdit->textCursor().insertImage(format);
+}
+ ```
+ 
+ 
