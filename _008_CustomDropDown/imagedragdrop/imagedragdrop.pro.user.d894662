@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.0, 2018-11-21T09:14:52. -->
+<!-- Written by QtCreator 4.2.0, 2018-11-21T00:12:27. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{61805a84-09cf-4b33-84e1-e11f5e1fdf6f}</value>
+  <value type="QByteArray">{d8946621-c38a-449a-8008-871088206cd1}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -285,8 +285,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">imagedragdrop</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:H:/002_QT/003_Qt/0004_Qt_QMainWindow/0004_Qt_QMainWindow/_008_CustomDropDown/imagedragdrop/imagedragdrop.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">imagedragdrop2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:G:/002_QT/003_Qt/0004_Qt_QMainWindow/_008_CustomDropDown/imagedragdrop/imagedragdrop.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">imagedragdrop.pro</value>
